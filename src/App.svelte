@@ -1,19 +1,29 @@
 <script lang="ts">
   import Cup from './lib/Cup.svelte';
+
+  const numCups = 8;
+  const goal = Math.floor(numCups * 0.25 * 10) / 10;
+
+  let fullCupsNum = $state(0);
+  let remaining = $derived(goal - fullCupsNum * 0.25);
 </script>
 
 <h1>Drink Water</h1>
-<h3>Goal: 2 Liters</h3>
+<h3>{`Goal: ${goal} Liters`}</h3>
 <div class="cup">
   <div class="remained" id="remained">
-    <span id="liters">2L</span><small>Remained </small>
+    <span id="liters">{`${remaining}L`}</span><small>Remained </small>
   </div>
-  <div class="percentage" id="percentage"></div>
+  <div
+    class="percentage"
+    id="percentage"
+    style={`height: ${fullCupsNum * 10}%;`}>
+  </div>
 </div>
 <p class="text">Select how many glasses of water that you have drank</p>
 <div class="cups">
-  {#each new Array(8) as cup, idx (idx)}
-    <Cup />
+  {#each new Array(numCups) as cup, idx (idx)}
+    <Cup id={idx + 1} bind:fullCupsNum />
   {/each}
 </div>
 

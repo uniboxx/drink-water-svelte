@@ -1,4 +1,16 @@
-<div class="cup cup-small">250 ml</div>
+<script>
+  let { id, fullCupsNum = $bindable() } = $props();
+</script>
+
+<div
+  tabindex={id}
+  role="button"
+  {id}
+  class={`cup cup-small ${fullCupsNum >= id ? 'full' : ''}`}
+  onclick={() =>
+    fullCupsNum === id ? (fullCupsNum = id - 1) : (fullCupsNum = id)}>
+  250 ml
+</div>
 
 <style lang="scss">
   @use '../scss/vars';
