@@ -1,0 +1,38 @@
+@import "vars";
+@import "base";
+
+.cup {
+  background-color: #fff;
+  border: 4px solid $borderColor;
+  color: $borderColor;
+  border-radius: 0 0 40px 40px;
+  height: 330px;
+  width: 150px;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .remained {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    transition: 0.3s ease;
+    span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .percentage {
+    background-color: $fillColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    height: 0;
+    transition: 0.3s ease;
+  }
+}
